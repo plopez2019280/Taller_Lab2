@@ -1,0 +1,75 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Mascotas",
+    "dateExported": "2024-02-09T18:05:21.924Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "0ce8a120-0cba-49ff-aadd-36cd2b47ce15",
+            "colId": "f9c4cbd2-5257-446a-b369-9020403ca29a",
+            "containerId": "",
+            "name": "mascotasPost",
+            "url": "localhost:3000/api/animales",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-09T16:24:42.730Z",
+            "modified": "2024-02-09T17:52:03.397Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"raza\": \"gato\",\n  \"especie\": \"Perro\",\n  \"color\": \"Negro\",\n  \"estadoAdoptivo\": \"No adoptado\",\n  \"sexo\": \"Macho\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ffed9035-2308-40d9-b4ae-a86f7f3baba0",
+            "colId": "f9c4cbd2-5257-446a-b369-9020403ca29a",
+            "containerId": "",
+            "name": "mascotasGet",
+            "url": "localhost:3000/api/animales",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-09T17:34:26.444Z",
+            "modified": "2024-02-09T17:34:37.877Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b76c3296-ff4c-4d0e-8669-4c07d1758881",
+            "colId": "f9c4cbd2-5257-446a-b369-9020403ca29a",
+            "containerId": "",
+            "name": "mascotasPut",
+            "url": "localhost:3000/api/animales/65c6664348c1d7cbdd747f92",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-09T17:42:59.278Z",
+            "modified": "2024-02-09T17:52:56.232Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"color\": \"rojo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b5a722f3-cac9-4bf5-9b31-14e38b832062",
+            "colId": "f9c4cbd2-5257-446a-b369-9020403ca29a",
+            "containerId": "",
+            "name": "mascotasDelete",
+            "url": "localhost:3000/api/animales/65c6664348c1d7cbdd747f92",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-09T17:47:10.051Z",
+            "modified": "2024-02-09T17:53:05.350Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
