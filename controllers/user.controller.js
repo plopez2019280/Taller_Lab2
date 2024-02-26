@@ -1,10 +1,11 @@
-const { response } = require('express');
+const { response, json } = require('express');
 const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/usuario');
 
-const usuariosGet = async (req, res = response) =>{
-    const { limite, desde} = req.query;
-    const query = {estado: true};
+const usuariosGet = async (req, res = response ) => {
+    const { limite, desde } = req.query;
+    const query = { estado: true};
+
     const [total, usuarios] = await Promise.all([
         Usuario.countDocuments(query),
         Usuario.find(query)
@@ -12,14 +13,13 @@ const usuariosGet = async (req, res = response) =>{
         .limit(Number(limite))
     ]);
 
-
     res.status(200).json({
         total,
         usuarios
     });
-}
+} 
 
-const getUsuarioById = async (req, res) => {
+const getUsuarioByid = async (req, res) => {
     const { id } = req.params;
     const usuario = await Usuario.findOne({_id: id});
 
@@ -28,27 +28,31 @@ const getUsuarioById = async (req, res) => {
     });
 }
 
-
-const usuariosPut = async (req, res) =>{
+const usuariosPut = async (req, res) => {
     const { id } = req.params;
-    const { _id, passwords, google, correo, ...resto} = req.body;
+    const { _id, password, google, correo, ...resto} = req.body;
 
-    const usuario = await Usuario.findByIdAndUpdate(id, resto);
+    await Usuario.findByIdAndUpdate(id, resto);
+
+    const usuario = await Usuario.findOne({_id: id});
 
     res.status(200).json({
-        msg: 'Usuario Actualizado exitosamente'
-    });
+        msg: 'Usuario Actualizado exitosamente',
+        usuario
+    })
 }
 
-const usuariosDelete = async (req, res) =>{
-    const { id } = req.params;
-    const usuario = await Usuario.findByIdAndUpdate(id,{estado: false});
+const usuariosDelete = async (req, res) => {
+    const {id} = req.params;
+    await Usuario.findByIdAndUpdate(id,{estado: false});
+
+    const usuario = await Usuario.findOne({_id: id});
 
     res.status(200).json({
-        msg: 'Usuario eliminado exitosamente'
+        msg: 'Usuario eliminado exitosamente',
+        usuario
     });
 }
-
 
 const usuariosPost = async (req, res) =>{
     const { nombre, correo, password, role } = req.body;
@@ -64,9 +68,9 @@ const usuariosPost = async (req, res) =>{
 }
 
 module.exports = {
+    usuariosDelete,
     usuariosPost,
     usuariosGet,
-    getUsuarioById,
-    usuariosPut,
-    usuariosDelete
+    getUsuarioByid,
+    usuariosPut
 }
